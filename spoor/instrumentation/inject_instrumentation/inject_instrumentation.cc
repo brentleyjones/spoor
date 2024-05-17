@@ -253,15 +253,25 @@ auto InjectInstrumentation::InstrumentModule(
       if (options_.enable_runtime) builder.CreateCall(enable_runtime);
     }
     builder.CreateCall(log_function_entry, {builder.getInt64(function_id)});
+    bool is_musttail_call_instruction = false;
     for (auto& basic_block : function) {
       for (auto& instruction : basic_block) {
+        if (llvm::CallInst::classof(&instruction)) {
+          is_musttail_call_instruction = llvm::cast<llvm::CallInst>(&instruction)->isMustTailCall();
+          if (is_musttail_call_instruction) {
+            builder.SetInsertPoint(&instruction);
+          }
+        }
         const auto is_return_instruction =
             llvm::ReturnInst::classof(&instruction);
         if (is_return_instruction) {
-          builder.SetInsertPoint(&instruction);
+          if (!is_musttail_call_instruction) {
+            builder.SetInsertPoint(&instruction);
+          }
           builder.CreateCall(log_function_exit,
                              {builder.getInt64(function_id)});
           if (is_main) builder.CreateCall(deinitialize_runtime);
+          is_musttail_call_instruction = false;
         }
       }
     }
