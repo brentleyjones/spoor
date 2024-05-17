@@ -29,6 +29,6 @@ cc_test(
     deps = [
         ":flat_map",
         "//util:numeric",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )

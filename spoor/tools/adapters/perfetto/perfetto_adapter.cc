@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <filesystem>
+#include <numeric>
 #include <string>
 #include <string_view>
 #include <unordered_set>

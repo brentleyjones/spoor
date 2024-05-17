@@ -25,7 +25,7 @@ cc_library(
         "//spoor/runtime/trace",
         "//util:numeric",
         "//util/time:clock",
-        "@com_google_absl//absl/strings:str_format",
+        "@abseil-cpp//absl/strings:str_format",
         "@com_microsoft_gsl//:gsl",
     ],
 )
@@ -44,11 +44,11 @@ cc_test(
         "//spoor/runtime/trace:trace_mock",
         "//util:numeric",
         "//util/time:clock_mock",
-        "@com_google_absl//absl/strings:str_format",
-        "@com_google_absl//absl/synchronization",
-        "@com_google_absl//absl/time",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/strings:str_format",
+        "@abseil-cpp//absl/synchronization",
+        "@abseil-cpp//absl/time",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -78,9 +78,9 @@ cc_test(
         "//spoor/runtime/buffer",
         "//spoor/runtime/trace",
         "//util/compression",
-        "@com_google_absl//absl/synchronization",
-        "@com_google_absl//absl/time",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/synchronization",
+        "@abseil-cpp//absl/time",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -93,6 +93,6 @@ cc_library(
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         ":flush_queue",
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
 )

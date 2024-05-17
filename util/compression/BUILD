@@ -30,8 +30,8 @@ cc_library(
         "//util:numeric",
         "//util:result",
         "//util/flat_map",
-        "@com_google_snappy//:snappy",
         "@com_microsoft_gsl//:gsl",
+        "@snappy",
     ],
 )
 
@@ -44,7 +44,7 @@ cc_test(
     visibility = ["//visibility:private"],
     deps = [
         ":compression",
-        "@com_google_googletest//:gtest_main",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest_main",
     ],
 )

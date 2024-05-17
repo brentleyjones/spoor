@@ -11,6 +11,7 @@ sh_test(
         "//spoor/runtime:spoor_runtime_default_config",
         "//spoor/test_data",
         "//spoor/tools:spoor",
+        "@bazel_tools//tools/bash/runfiles",
         "@dev_perfetto_trace_processor//file:trace_processor",
     ],
     visibility = ["//visibility:private"],

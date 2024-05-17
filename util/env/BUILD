@@ -20,7 +20,7 @@ cc_library(
     deps = [
         "//util:result",
         "//util/flat_map",
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/strings",
     ],
 )
 
@@ -36,7 +36,7 @@ cc_test(
         "//util:numeric",
         "//util:result",
         "//util/flat_map",
-        "@com_google_absl//absl/strings",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/strings",
+        "@googletest//:gtest_main",
     ],
 )

@@ -3,7 +3,6 @@
 
 load("@rules_cc//cc:action_names.bzl", "CPP_COMPILE_ACTION_NAME")
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
-load("@bazel_skylib//rules:copy_file.bzl", "copy_file")
 
 def _run_clang_format(
         ctx,

@@ -21,10 +21,10 @@ cc_library(
         "//spoor/instrumentation/symbols:symbols_cc_proto",
         "//spoor/runtime/trace",
         "//util:result",
-        "@com_google_absl//absl/strings",
-        "@com_google_absl//absl/strings:str_format",
-        "@com_google_protobuf//:protobuf",
+        "@abseil-cpp//absl/strings",
+        "@abseil-cpp//absl/strings:str_format",
         "@com_microsoft_gsl//:gsl",
+        "@protobuf",
     ],
 )
 
@@ -38,7 +38,7 @@ cc_test(
     deps = [
         ":csv",
         "//spoor/instrumentation/symbols:symbols_cc_proto",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_protobuf//:protobuf",
+        "@googletest//:gtest_main",
+        "@protobuf",
     ],
 )

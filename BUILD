@@ -1,6 +1,13 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
+load("@rules_python//python:pip.bzl", "compile_pip_requirements")
+
+compile_pip_requirements(
+    name = "requirements-dev",
+    src = "requirements-dev.in",
+)
+
 filegroup(
     name = "clang_format_config",
     data = [".clang-format"],

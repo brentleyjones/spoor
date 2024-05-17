@@ -11,11 +11,11 @@
 #include <vector>
 
 #include "absl/strings/str_join.h"
-#include "external/com_bazelbuild_bazel/src/main/protobuf/extra_actions_base.pb.h"
 #include "google/protobuf/stubs/common.h"
 #include "google/protobuf/stubs/status.h"
 #include "google/protobuf/util/json_util.h"
 #include "gsl/gsl"
+#include "src/main/protobuf/extra_actions_base.pb.h"
 #include "toolchain/compilation_database/compile_commands.pb.h"
 #include "util/result.h"
 

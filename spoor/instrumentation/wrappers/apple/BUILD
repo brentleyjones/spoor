@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 load(
-    "@build_bazel_rules_apple//apple:macos.bzl",
+    "@rules_apple//apple:macos.bzl",
     "macos_command_line_application",
 )
 load("//toolchain:config.bzl", "SPOOR_DEFAULT_LINKOPTS")
