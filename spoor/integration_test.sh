@@ -2,7 +2,20 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-set -e
+set -eu
+
+# --- begin runfiles.bash initialization v3 ---
+# Copy-pasted from the Bazel Bash runfiles library v3.
+set -uo pipefail; f=bazel_tools/tools/bash/runfiles/runfiles.bash
+source "${RUNFILES_DIR:-/dev/null}/$f" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "${RUNFILES_MANIFEST_FILE:-/dev/null}" | cut -f2- -d' ')" 2>/dev/null || \
+  source "$0.runfiles/$f" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "$0.runfiles_manifest" | cut -f2- -d' ')" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "$0.exe.runfiles_manifest" | cut -f2- -d' ')" 2>/dev/null || \
+  { echo>&2 "ERROR: cannot find $f"; exit 1; }; f=;
+# --- end runfiles.bash initialization v3 ---
+
+set +o pipefail
 
 BASE_PATH="spoor"
 OUTPUT_EXECUTABLE_FILE="fib"
@@ -60,9 +73,11 @@ fi
 
 echo "SELECT COUNT(id) FROM slice;" >> "$TRACE_PROCESSOR_QUERY_FILE"
 
+trace_processor=$(rlocation dev_perfetto_trace_processor/file/trace_processor)
+
 TRACE_QUERY_RESULT="$(
-  PERFETTO_TRACE_PROCESSOR_INSTALL_PATH="external/dev_perfetto_trace_processor" \
-  "external/dev_perfetto_trace_processor/file/trace_processor" \
+  PERFETTO_TRACE_PROCESSOR_INSTALL_PATH="${trace_processor%/*/*}" \
+  "$trace_processor" \
   "$OUTPUT_PERFETTO_FILE" \
   --query-file="$TRACE_PROCESSOR_QUERY_FILE" | tail -1)"
 

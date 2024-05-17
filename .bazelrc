@@ -1,0 +1,11 @@
+common --cxxopt="-std=c++20"
+common --host_cxxopt="-std=c++20"
+
+# Ensure we are using a specific macOS SDK even if our Xcode version has a newer SDK
+common --macos_minimum_os=14.0
+
+# Only use Bzlmod
+common --noenable_workspace
+
+# Put your custom flags in `./user.bazelrc`, which is gitignored
+try-import user.bazelrc

@@ -1,0 +1,11 @@
+index fbfce4275b09..39e1974b1cb7 100644
+--- utils/bazel/llvm-project-overlay/llvm/BUILD.bazel
++++ utils/bazel/llvm-project-overlay/llvm/BUILD.bazel
+@@ -216,6 +216,7 @@ cc_library(
+     hdrs = glob([
+         "include/llvm/Support/**/*.h",
+         "include/llvm/ADT/*.h",
++        "include/llvm/CAS/*.h",
+     ]) + [
+         "include/llvm-c/Core.h",
+         "include/llvm-c/DataTypes.h",

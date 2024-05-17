@@ -33,6 +33,6 @@ cc_test(
         ":memory",
         "//util:numeric",
         "//util:result",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )

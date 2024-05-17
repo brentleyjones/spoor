@@ -36,7 +36,6 @@
 #include "spoor/instrumentation/symbols/symbols.pb.h"
 #include "spoor/instrumentation/symbols/symbols_file_writer.h"
 #include "swift/Demangling/Demangle.h"
-#include "swift/Demangling/Demangler.h"
 #include "util/numeric.h"
 #include "util/time/clock.h"
 
@@ -72,7 +71,7 @@ auto InjectInstrumentation::run(llvm::Module& llvm_module,
     auto filters_result =
         options_.filters_reader->Read(options_.filters_file_path.value());
     if (filters_result.IsErr()) {
-      llvm::report_fatal_error(filters_result.Err().message, false);
+      llvm::report_fatal_error(llvm::Twine(filters_result.Err().message), false);
     }
     auto file_filters = std::move(filters_result).Ok();
     std::move(std::begin(file_filters), std::end(file_filters),
@@ -104,7 +103,7 @@ auto InjectInstrumentation::run(llvm::Module& llvm_module,
         }
       }
     }();
-    llvm::report_fatal_error(message, false);
+    llvm::report_fatal_error(llvm::Twine(message), false);
   }
 
   return preserved_analyses;

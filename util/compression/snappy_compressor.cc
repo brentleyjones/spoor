@@ -4,7 +4,7 @@
 #include "util/compression/snappy_compressor.h"
 
 #include "gsl/gsl"
-#include "snappy/snappy.h"
+#include "snappy.h"
 #include "util/compression/compressor.h"
 
 namespace util::compression {

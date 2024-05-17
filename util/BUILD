@@ -36,6 +36,6 @@ cc_test(
     deps = [
         ":numeric",
         ":result",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )

@@ -15,7 +15,7 @@ proto_library(
     name = "symbols_proto",
     srcs = ["symbols.proto"],
     visibility = ["//visibility:public"],
-    deps = ["@com_google_protobuf//:timestamp_proto"],
+    deps = ["@protobuf//:timestamp_proto"],
 )
 
 cc_proto_library(
@@ -53,8 +53,8 @@ cc_test(
         ":symbols_cc_proto",
         ":symbols_reader",
         "//util/file_system:file_system_mock",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_protobuf//:protobuf",
+        "@googletest//:gtest_main",
+        "@protobuf",
     ],
 )
 
@@ -87,8 +87,8 @@ cc_test(
         ":symbols_cc_proto",
         ":symbols_writer",
         "//util/file_system:file_system_mock",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_protobuf//:protobuf",
+        "@googletest//:gtest_main",
+        "@protobuf",
     ],
 )
 
@@ -106,7 +106,7 @@ cc_library(
         ":symbols_cc_proto",
         ":symbols_reader",
         ":symbols_writer",
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
 )
 
@@ -133,7 +133,7 @@ cc_test(
     deps = [
         ":symbols_cc_proto",
         ":symbols_utility",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_protobuf//:protobuf",
+        "@googletest//:gtest_main",
+        "@protobuf",
     ],
 )

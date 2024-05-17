@@ -3,14 +3,18 @@
 
 load("@rules_cc//cc:defs.bzl", "objc_library")
 load(
-    "@build_bazel_rules_apple//apple:ios.bzl",
+    "@rules_apple//apple:ios.bzl",
     "ios_static_framework",
     "ios_unit_test",
 )
-load("@build_bazel_rules_apple//apple:apple.bzl", "apple_xcframework")
-load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
 load(
-    "@build_bazel_rules_apple//apple:watchos.bzl",
+    "@rules_apple//apple:apple.bzl",
+    "apple_static_library",
+    "apple_xcframework",
+)
+load("@rules_apple//apple:macos.bzl", "macos_unit_test")
+load(
+    "@rules_apple//apple:watchos.bzl",
     "watchos_static_framework",
     # TODO(237): Fix watchOS unit tests.
     # "watchos_unit_test",
@@ -76,7 +80,6 @@ apple_xcframework(
             "iphone",
         ],
     },
-    framework_type = ["dynamic"],
     infoplists = ["SpoorRuntimeInfo.plist"],
     ios = {
         "simulator": [
@@ -119,7 +122,6 @@ apple_xcframework(
             "iphone",
         ],
     },
-    framework_type = ["dynamic"],
     infoplists = ["SpoorRuntimeInfo.plist"],
     ios = {
         "simulator": [

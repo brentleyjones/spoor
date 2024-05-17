@@ -34,7 +34,7 @@ cc_library(
         "//util:numeric",
         "//util:result",
         "//util/env",
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/strings",
         "@com_microsoft_gsl//:gsl",
     ],
 )
@@ -49,7 +49,7 @@ cc_test(
     deps = [
         ":file_system",
         "//util/env",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -68,7 +68,7 @@ cc_library(
     deps = [
         ":file_system",
         "//util:result",
-        "@com_google_googletest//:gtest",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest",
     ],
 )

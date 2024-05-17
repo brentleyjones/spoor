@@ -11,9 +11,9 @@
 
 #include "absl/strings/str_cat.h"
 #include "absl/strings/str_join.h"
-#include "external/com_bazelbuild_bazel/src/main/protobuf/extra_actions_base.pb.h"
 #include "google/protobuf/util/message_differencer.h"
 #include "gtest/gtest.h"
+#include "src/main/protobuf/extra_actions_base.pb.h"
 #include "toolchain/compilation_database/compile_commands.pb.h"
 
 namespace {

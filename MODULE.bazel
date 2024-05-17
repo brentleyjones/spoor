@@ -1,0 +1,157 @@
+module(
+    name = "spoor",
+    version = "0.0.0",
+)
+
+# Explicit dependency until Bazel fixes toolchain resolution order with rules_cc
+bazel_dep(name = "apple_support", version = "1.15.1")
+bazel_dep(name = "abseil-cpp", version = "20240116.2")
+bazel_dep(name = "bazel_skylib", version = "1.6.1")  # Dep for llvm-project
+bazel_dep(name = "platforms", version = "0.0.9")  # Dep for llvm-project
+bazel_dep(name = "protobuf", version = "21.7")
+bazel_dep(name = "rules_apple", version = "3.5.1")
+bazel_dep(name = "rules_go", version = "0.47.1")
+bazel_dep(name = "rules_proto", version = "6.0.0")
+bazel_dep(name = "rules_python", version = "0.32.2")
+bazel_dep(name = "snappy", version = "1.2.0")
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pip_deps_dev",
+    python_version = "3.11",
+    requirements_lock = "//:requirements-dev.txt",
+)
+use_repo(pip, "pip_deps_dev")
+
+http_archive = use_repo_rule(
+    "@bazel_tools//tools/build_defs/repo:http.bzl",
+    "http_archive",
+)
+
+http_archive(
+    name = "com_google_cityhash",
+    build_file = "//toolchain:city_hash.BUILD",
+    integrity = "sha256-IsJK9zo/7JQC46GD8t7ofXHxOoGFmwQGRy5nH7fROmk=",
+    strip_prefix = "cityhash-f5dc54147fcce12cefd16548c8e760d68ac04226",
+    url = "https://github.com/google/cityhash/archive/f5dc54147fcce12cefd16548c8e760d68ac04226.tar.gz",
+)
+
+http_archive(
+    name = "com_marzer_tomlplusplus",
+    build_file = "//toolchain:tomlplusplus.BUILD",
+    integrity = "sha256-hRf2WTik+q6cz467NmMaOMHK37XvqF2acuFbnpfSUVU=",
+    strip_prefix = "tomlplusplus-3.4.0",
+    url = "https://github.com/marzer/tomlplusplus/archive/refs/tags/v3.4.0.tar.gz",
+)
+
+http_archive(
+    name = "com_microsoft_gsl",
+    build_file = "//toolchain:gsl.BUILD",
+    integrity = "sha256-8OMssQZU/qka1WveiRcNeM+/Q2PuCwHY8JfeK6SfbOk=",
+    strip_prefix = "GSL-4.0.0",
+    url = "https://github.com/microsoft/GSL/archive/refs/tags/v4.0.0.tar.gz",
+)
+
+apple_llvm_and_swift = use_extension(
+    "//bzlmod:apple_llvm_and_swift.bzl",
+    "apple_llvm_and_swift",
+)
+use_repo(apple_llvm_and_swift, "com_apple_swift", "llvm-raw")
+
+llvm_deps = use_extension("//bzlmod:llvm_deps.bzl", "llvm_deps")
+use_repo(llvm_deps, "llvm-project", "zlib")  # Shouldn't need to use "zlib" here, working around a 7.2.0rc1 bug
+
+perfetto = use_extension("//bzlmod:perfetto.bzl", "perfetto")
+use_repo(perfetto, "perfetto")
+
+perfetto_deps = use_extension("//bzlmod:perfetto_deps.bzl", "perfetto_deps")
+
+# Dev dependencies
+
+bazel_dep(
+    name = "buildifier_prebuilt",
+    version = "6.4.0",
+    dev_dependency = True,
+)
+bazel_dep(
+    name = "google_benchmark",
+    version = "1.8.3",
+    dev_dependency = True,
+)
+bazel_dep(
+    name = "googletest",
+    version = "1.14.0.bcr.1",
+    dev_dependency = True,
+)
+
+# Needed by `com_bazelbuild_bazel`
+bazel_dep(
+    name = "rules_cc",
+    version = "0.0.9",
+    dev_dependency = True,
+)
+bazel_dep(
+    name = "rules_java",
+    version = "7.5.0",
+    dev_dependency = True,
+)
+
+http_file = use_repo_rule(
+    "@bazel_tools//tools/build_defs/repo:http.bzl",
+    "http_file",
+)
+
+http_archive(
+    name = "com_bazelbuild_bazel",
+    dev_dependency = True,
+    integrity = "sha256-Z6saZ3nvz/Yb3mOY6UMhUHsS3GiffATU8H9cTyjF0Io=",
+    strip_prefix = "bazel-7.1.2",
+    url = "https://github.com/bazelbuild/bazel/archive/refs/tags/7.1.2.tar.gz",
+)
+
+http_file(
+    name = "com_google_style_guide_pylintrc",
+    dev_dependency = True,
+    downloaded_file_path = "pylintrc",
+    integrity = "sha256-NHGhRLAxVM7x87qDoJArwcrWeRz38J775lzxJSIQOtU=",
+    urls = ["https://raw.githubusercontent.com/google/styleguide/8487c083e1faecb1259be8a8873618cfdb69d33d/pylintrc"],
+)
+
+http_file(
+    name = "dev_perfetto_trace_processor",
+    dev_dependency = True,
+    downloaded_file_path = "trace_processor",
+    executable = True,
+    integrity = "sha256-yKi6yV8CEMgVn2RGiA5vDs9O4izNwA8WyvUeiXMoHMU=",
+    # Forked from google for `PERFETTO_TRACE_PROCESSOR_INSTALL_PATH` support
+    urls = ["https://raw.githubusercontent.com/lelandjansen/perfetto/2da9c1759da22ee6edca22d87e375b247e6ba322/tools/trace_processor"],
+)
+
+http_archive(
+    name = "wikipedia_ios",
+    build_file = "//toolchain:wikipedia_ios.BUILD",
+    dev_dependency = True,
+    integrity = "sha256-DLXeirytUxEPbppkcn+DX0pIS5cbo8Q2QMquEOX+enc=",
+    patch_cmds = [
+        # Download the project's dependencies as a patch to leverage Bazel's
+        # `http_archive` caching.
+        """
+        xcodebuild clean build \
+          -resolvePackageDependencies \
+          -clonedSourcePackagesDirPath . \
+          -project Wikipedia.xcodeproj \
+          -scheme Wikipedia
+        """,
+        # Hack: Temporarily rename path names with spaces because they are not
+        # supported by Bazel's `filegroup`.
+        """
+        find . -name '* *' -print0 |
+          sort -rz |
+            while read -d $'\\0' f; do
+              mv \"$f\" \"$(dirname \"$f\")/$(basename \"${f// /__SPACE__}\")\"
+            done
+        """,
+    ],
+    strip_prefix = "wikipedia-ios-releases-7.4.10",
+    url = "https://github.com/wikimedia/wikipedia-ios/archive/refs/tags/releases/7.4.10.tar.gz",
+)

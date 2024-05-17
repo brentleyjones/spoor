@@ -43,10 +43,10 @@ cc_library(
         "//spoor/instrumentation/symbols:symbols_cc_proto",
         "//spoor/runtime/trace",
         "//util:numeric",
-        "@com_google_absl//absl/strings",
-        "@com_google_absl//absl/strings:str_format",
-        "@com_google_protobuf//:protobuf",
+        "@abseil-cpp//absl/strings",
+        "@abseil-cpp//absl/strings:str_format",
         "@com_microsoft_gsl//:gsl",
+        "@protobuf",
     ],
 )
 
@@ -63,10 +63,10 @@ cc_test(
         ":perfetto_trace_cc_proto",
         "//spoor/instrumentation/symbols:symbols_cc_proto",
         "//spoor/runtime/trace",
-        "@com_google_absl//absl/strings",
-        "@com_google_absl//absl/strings:str_format",
+        "@abseil-cpp//absl/strings",
+        "@abseil-cpp//absl/strings:str_format",
         "@com_google_cityhash//:city_hash",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_protobuf//:protobuf",
+        "@googletest//:gtest_main",
+        "@protobuf",
     ],
 )

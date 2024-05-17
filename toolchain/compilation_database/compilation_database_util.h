@@ -11,8 +11,8 @@
 #include <variant>
 #include <vector>
 
-#include "google/protobuf/stubs/status.h"
 #include "gsl/gsl"
+#include "src/google/protobuf/stubs/status.h"
 #include "toolchain/compilation_database/compile_commands.pb.h"
 #include "util/result.h"
 
