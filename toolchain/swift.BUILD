@@ -66,7 +66,6 @@ cc_library(
         #   swift::Demangle::isSwiftSymbol(llvm::StringRef), referenced from:
         #       spoor::instrumentation::inject_instrumentation::InjectInstrumentation::InstrumentModule(gsl::not_null<llvm::Module*>, spoor::instrumentation::filters::Filters const&) const::$_0::operator()() const in libinject_instrumentation.a[2](inject_instrumentation.o)
         "@llvm-project//llvm:Support",
-
         ":SwiftShims",
         ":swift",
         ":llvm_overlay",

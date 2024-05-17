@@ -5,8 +5,8 @@
 
 namespace spoor::runtime {
 
-auto operator==(const DeletedFilesInfo& lhs, const DeletedFilesInfo& rhs)
-    -> bool {
+auto operator==(const DeletedFilesInfo& lhs,
+                const DeletedFilesInfo& rhs) -> bool {
   return lhs.deleted_files == rhs.deleted_files &&
          lhs.deleted_bytes == rhs.deleted_bytes;
 }

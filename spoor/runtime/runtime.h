@@ -121,8 +121,8 @@ SPOOR_RUNTIME_EXPORT auto StubImplementation() -> bool;
 // Equality.
 // Implemented in the stub.
 
-auto operator==(const DeletedFilesInfo& lhs, const DeletedFilesInfo& rhs)
-    -> bool;
+auto operator==(const DeletedFilesInfo& lhs,
+                const DeletedFilesInfo& rhs) -> bool;
 auto operator==(const Config& lhs, const Config& rhs) -> bool;
 
 }  // namespace spoor::runtime
