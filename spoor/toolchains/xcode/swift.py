@@ -39,6 +39,7 @@ def _instrument_and_compile_bitcode(build_tools, target, files):
       f'--output_file={files["instrumented-llvm-bc"]}',
       f'--output_symbols_file={files["spoor-symbols"]}',
       '--output_language=bitcode',
+      '--force_binary_output',
   ]
   spoor_opt_env = make_spoor_opt_env(os.environ.copy(), files['object'],
                                      files['spoor-symbols'])
@@ -69,12 +70,19 @@ def main(argv, build_tools):
 
   parser = argparse.ArgumentParser()
   parser.add_argument('-target')
+  parser.add_argument('-output-filelist', dest='output_filelist', nargs='?')
   parser.add_argument('-o', action='append', dest='output_files', nargs='+')
   known_args, _ = parser.parse_known_args(args)
 
-  if known_args.output_files is None:
+  if known_args.output_filelist is not None:
+    with open(known_args.output_filelist, 'r') as file:
+      output_files = {line.strip() for line in file}
+  else:
+    if known_args.output_files is None:
+      return
+    output_files = {files[0] for files in known_args.output_files}
+  if not output_files:
     return
-  output_files = {files[0] for files in known_args.output_files}
 
   with open(output_file_map_path, 'r', encoding='utf-8') as file:
     output_file_map = {

@@ -130,7 +130,9 @@ def _compile(args, target, output_file, build_tools, frontend_clang_clangxx):
       for key, value in _preprocessor_macros(os.environ).items()
   ])
   frontend_args.append('-emit-llvm')
-  frontend_args[frontend_args.index('-o') + 1] = '/dev/stdout'
+  frontend_args.append('-o')
+  frontend_args.append('/dev/stdout')
+  # frontend_args[frontend_args.index('-o') + 1] = '/dev/stdout'
 
   spoor_opt_args = [build_tools.spoor_opt]
   spoor_opt_env = make_spoor_opt_env(
@@ -169,31 +171,44 @@ def _compile(args, target, output_file, build_tools, frontend_clang_clangxx):
           raise subprocess.CalledProcessError(backend.returncode, backend_args)
 
 
-def _link(args, runtime_framework, frontend_clang_clangxx):
-  link_args = [frontend_clang_clangxx] + args + [
-      f'-F{runtime_framework.path}',
-      '-framework',
-      runtime_framework.name,
-  ]
+def _link(args, parsable_args, runtime_framework, frontend_clang_clangxx):
+  link_args = [frontend_clang_clangxx] + args
+  if '-r' not in parsable_args:
+    link_args.extend([
+        f'-F{runtime_framework.path}',
+        '-framework',
+        runtime_framework.name,
+        f'-Wl,-rpath,{runtime_framework.path}',
+    ])
   subprocess.run(link_args, check=True)
 
 
 def main(argv, build_tools, frontend_clang_clangxx):
-  args = argv[1:]
+  original_args = argv[1:]
+
+  # Handle response files
+  if original_args[0].startswith("@"):
+    response_file = original_args[0][1:]
+    with open(response_file, "r") as f:
+      parsable_args = [arg[1:-1] for arg in f.read().splitlines()]
+  else:
+    parsable_args = original_args
+
+  # When using a response file, this won't do anything, but we don't include `-fembed-bitcode` in our response files
   args = [
-      arg for arg in args
+      arg for arg in original_args
       if arg not in ('-fembed-bitcode-marker', '-fembed-bitcode')
   ]
 
   parser = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
   parser.add_argument('-target')
   parser.add_argument('-o', dest='output_file')
-  known_args, _ = parser.parse_known_args(argv)
+  known_args, _ = parser.parse_known_args(parsable_args)
 
   target = Target(known_args.target) if known_args.target else None
   if target is None:
     raise NotImplementedError(
-        "Spoor's clang and clang++ wrappers require an explicit target.")
+        "Spoor's clang and clang++ wrappers require an explicit target.", args)
 
   if known_args.output_file is None:
     raise NotImplementedError(
@@ -213,7 +228,7 @@ def main(argv, build_tools, frontend_clang_clangxx):
     print(
         f'Warning: Skipping instrumentation for unsupported target "{target}".',
         file=sys.stderr)
-    subprocess.run([frontend_clang_clangxx] + args, check=True)
+    subprocess.run([frontend_clang_clangxx] + original_args, check=True)
     return
 
   if BuildPhase.Type.COMPILER in phase_types:
@@ -222,7 +237,7 @@ def main(argv, build_tools, frontend_clang_clangxx):
     return
 
   if BuildPhase.Type.LINKER in phase_types:
-    _link(args, runtime_framework, frontend_clang_clangxx)
+    _link(args, parsable_args, runtime_framework, frontend_clang_clangxx)
     return
 
   subprocess.run([frontend_clang_clangxx] + args, check=True)

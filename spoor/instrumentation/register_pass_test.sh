@@ -6,8 +6,8 @@ set -e
 
 if command -v opt-12 &> /dev/null; then
   OPT="opt-12"
-elif command -v opt &> /dev/null; then
-  OPT="opt"
+elif command -v /opt/homebrew/opt/llvm/bin/opt &> /dev/null; then
+  OPT="/opt/homebrew/opt/llvm/bin/opt"
 else
   echo "opt not found"
   exit 1
