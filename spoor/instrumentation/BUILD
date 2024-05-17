@@ -15,6 +15,7 @@ cc_library(
     hdrs = ["instrumentation.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = ["//util:numeric"],
 )
@@ -38,6 +39,7 @@ cc_library(
     srcs = ["spoor_opt.cc"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = [
         "//spoor/instrumentation:__pkg__",
         "//spoor/instrumentation/wrappers/apple:__pkg__",

@@ -15,6 +15,7 @@ cc_library(
     hdrs = ["flat_map.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = ["//util:result"],
 )

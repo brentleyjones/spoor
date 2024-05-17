@@ -19,6 +19,7 @@ load(
 
 cc_proto_library(
     name = "extra_actions_base_cc_proto",
+    tags = ["manual"],
     deps = [
         "@com_bazelbuild_bazel//src/main/protobuf:extra_actions_base_proto",
     ],
@@ -27,11 +28,13 @@ cc_proto_library(
 proto_library(
     name = "compile_commands_proto",
     srcs = ["compile_commands.proto"],
+    tags = ["manual"],
     visibility = ["//visibility:private"],
 )
 
 cc_proto_library(
     name = "compile_commands_cc_proto",
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [":compile_commands_proto"],
 )
@@ -42,6 +45,7 @@ cc_library(
     hdrs = ["compilation_database_util.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [
         ":compile_commands_cc_proto",

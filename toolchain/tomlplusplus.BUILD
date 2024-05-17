@@ -7,6 +7,7 @@ cc_library(
     name = "tomlplusplus",
     hdrs = ["toml.h"],
     include_prefix = "tomlplusplus",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
 )
 
@@ -15,5 +16,6 @@ genrule(
     srcs = ["toml.hpp"],
     outs = ["toml.h"],
     cmd = "cp $< $@",
+    tags = ["manual"],
     visibility = ["//visibility:private"],
 )

@@ -65,6 +65,7 @@ ios_static_framework(
     hdrs = RUNTIME_HDRS,
     bundle_name = _MODULE_NAME,
     minimum_os_version = _MINIMUM_IOS_VERSION,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_lib"],
 )
@@ -95,6 +96,7 @@ apple_xcframework(
         "ios": _MINIMUM_IOS_VERSION,
     },
     public_hdrs = RUNTIME_HDRS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         ":runtime_default_config_lib",
@@ -107,6 +109,7 @@ ios_static_framework(
     hdrs = RUNTIME_HDRS,
     bundle_name = _STUB_MODULE_NAME,
     minimum_os_version = _MINIMUM_IOS_VERSION,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_stub_lib"],
 )
@@ -138,6 +141,7 @@ apple_xcframework(
         "ios": _MINIMUM_IOS_VERSION,
     },
     public_hdrs = RUNTIME_HDRS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         ":runtime_default_config_lib",
@@ -150,6 +154,7 @@ watchos_static_framework(
     hdrs = RUNTIME_HDRS,
     bundle_name = _MODULE_NAME,
     minimum_os_version = _MINIMUM_WATCHOS_VERSION,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_lib"],
 )
@@ -159,6 +164,7 @@ watchos_static_framework(
     hdrs = RUNTIME_HDRS,
     bundle_name = _STUB_MODULE_NAME,
     minimum_os_version = _MINIMUM_WATCHOS_VERSION,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_stub_lib"],
 )
@@ -168,6 +174,7 @@ apple_static_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     minimum_os_version = _MINIMUM_IOS_VERSION,
     platform_type = "ios",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_lib"],
 )
@@ -177,6 +184,7 @@ apple_static_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     minimum_os_version = _MINIMUM_MACOS_VERSION,
     platform_type = "macos",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_lib"],
 )
@@ -186,6 +194,7 @@ apple_static_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     minimum_os_version = _MINIMUM_WATCHOS_VERSION,
     platform_type = "watchos",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_lib"],
 )
@@ -195,6 +204,7 @@ apple_static_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     minimum_os_version = _MINIMUM_IOS_VERSION,
     platform_type = "ios",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_stub_lib"],
 )
@@ -204,6 +214,7 @@ apple_static_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     minimum_os_version = _MINIMUM_MACOS_VERSION,
     platform_type = "macos",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_stub_lib"],
 )
@@ -213,6 +224,7 @@ apple_static_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     minimum_os_version = _MINIMUM_WATCHOS_VERSION,
     platform_type = "watchos",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_stub_lib"],
 )
@@ -222,6 +234,7 @@ apple_static_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     minimum_os_version = _MINIMUM_IOS_VERSION,
     platform_type = "ios",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_default_config_lib"],
 )
@@ -231,6 +244,7 @@ apple_static_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     minimum_os_version = _MINIMUM_IOS_VERSION,
     platform_type = "macos",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_default_config_lib"],
 )
@@ -240,6 +254,7 @@ apple_static_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     minimum_os_version = _MINIMUM_WATCHOS_VERSION,
     platform_type = "watchos",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_default_config_lib"],
 )
@@ -250,6 +265,7 @@ objc_library(
     hdrs = RUNTIME_HDRS,
     copts = _LIB_COPTS,
     module_name = _MODULE_NAME,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = ["//spoor/runtime"],
 )
@@ -260,6 +276,7 @@ objc_library(
     hdrs = RUNTIME_HDRS,
     copts = _LIB_COPTS,
     module_name = _STUB_MODULE_NAME,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = ["//spoor/runtime:runtime_stub"],
 )
@@ -268,6 +285,7 @@ objc_library(
     name = "runtime_default_config_lib",
     copts = _LIB_COPTS,
     module_name = _MODULE_NAME,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = ["//spoor/runtime:runtime_default_config"],
 )
@@ -341,6 +359,7 @@ objc_library(
     testonly = True,
     srcs = _WRAPPER_TEST_SRCS,
     copts = _TEST_COPTS,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [":runtime_lib"],
 )
@@ -350,6 +369,7 @@ objc_library(
     testonly = True,
     srcs = _WRAPPER_TEST_SRCS,
     copts = _TEST_COPTS,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [":runtime_stub_lib"],
 )
@@ -359,6 +379,7 @@ objc_library(
     testonly = True,
     srcs = ["RuntimeTests.mm"],
     copts = _TEST_COPTS,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [
         ":runtime_lib",
@@ -371,6 +392,7 @@ objc_library(
     testonly = True,
     srcs = ["RuntimeStubTests.mm"],
     copts = _TEST_COPTS,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [
         ":runtime_stub_lib",

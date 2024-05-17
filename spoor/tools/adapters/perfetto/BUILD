@@ -22,6 +22,7 @@ cc_library(
     hdrs = ["perfetto_adapter_private.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [
         "//spoor/runtime/trace",
@@ -36,6 +37,7 @@ cc_library(
     hdrs = ["perfetto_adapter.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         ":perfetto_adapter_private",

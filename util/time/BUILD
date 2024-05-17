@@ -15,6 +15,7 @@ cc_library(
     hdrs = ["clock.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
 )
 
@@ -36,6 +37,7 @@ cc_library(
     hdrs = ["clock_mock.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         ":clock",

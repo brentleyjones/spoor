@@ -29,6 +29,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         "//util:numeric",
@@ -64,6 +65,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_TEST_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         ":file_system",

@@ -17,6 +17,7 @@ cc_library(
     ],
     hdrs = ["snappy.h"],
     include_prefix = "snappy",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
 )
 

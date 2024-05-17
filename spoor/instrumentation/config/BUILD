@@ -15,6 +15,7 @@ cc_library(
     hdrs = ["output_language.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/instrumentation:__subpackages__"],
     deps = ["//util/flat_map"],
 )
@@ -45,6 +46,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/instrumentation:__pkg__"],
     deps = [
         ":output_language",
@@ -67,6 +69,7 @@ cc_library(
     hdrs = ["source_mock.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [
         ":source",
@@ -100,6 +103,7 @@ cc_library(
     hdrs = ["config_private.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [":output_language"],
 )
@@ -116,6 +120,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/instrumentation:__pkg__"],
     deps = [
         ":config_private",

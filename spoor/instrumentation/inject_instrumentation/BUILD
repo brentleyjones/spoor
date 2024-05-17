@@ -16,6 +16,7 @@ cc_library(
     hdrs = ["inject_instrumentation_private.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:private"],
     deps = [
         "//util:numeric",
@@ -31,6 +32,7 @@ cc_library(
     hdrs = ["inject_instrumentation.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/instrumentation:__pkg__"],
     deps = [
         ":inject_instrumentation_private",

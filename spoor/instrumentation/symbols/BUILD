@@ -33,6 +33,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         ":symbols_cc_proto",
@@ -67,6 +68,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         ":symbols_cc_proto",
@@ -101,6 +103,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/instrumentation:__subpackages__"],
     deps = [
         ":symbols_cc_proto",
@@ -116,6 +119,7 @@ cc_library(
     hdrs = ["symbols_utility.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         ":symbols_cc_proto",

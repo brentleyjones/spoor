@@ -24,6 +24,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         "//util:numeric",

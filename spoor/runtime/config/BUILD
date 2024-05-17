@@ -23,6 +23,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         "//spoor/runtime/buffer",
@@ -45,6 +46,7 @@ cc_library(
     hdrs = ["config.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         ":source",
@@ -65,6 +67,7 @@ cc_library(
     hdrs = ["source_mock.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         ":source",

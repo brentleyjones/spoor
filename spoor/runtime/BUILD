@@ -20,6 +20,7 @@ cc_library(
     hdrs = ["runtime.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         "//spoor/runtime/config",
@@ -35,6 +36,7 @@ cc_library(
 
 cc_static_library(
     name = "spoor_runtime",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime"],
 )
@@ -48,12 +50,14 @@ cc_library(
     hdrs = ["runtime.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = ["@com_microsoft_gsl//:gsl"],
 )
 
 cc_static_library(
     name = "spoor_runtime_stub",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_stub"],
 )
@@ -63,11 +67,13 @@ cc_library(
     srcs = ["runtime_default_config.cc"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
 )
 
 cc_static_library(
     name = "spoor_runtime_default_config",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [":runtime_default_config"],
 )

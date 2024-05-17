@@ -19,6 +19,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         "//spoor/runtime/buffer",
@@ -58,6 +59,7 @@ cc_library(
     hdrs = ["black_hole_flush_queue.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         ":flush_queue",
@@ -90,6 +92,7 @@ cc_library(
     hdrs = ["flush_queue_mock.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         ":flush_queue",

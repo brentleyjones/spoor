@@ -16,6 +16,7 @@ cc_library(
     hdrs = ["config.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/tools:__subpackages__"],
     deps = [
         "//util/flat_map",
@@ -41,6 +42,7 @@ cc_library(
     hdrs = ["command_line_config.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/tools:__pkg__"],
     deps = [
         ":config",

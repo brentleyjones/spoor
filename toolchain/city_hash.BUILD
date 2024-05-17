@@ -13,6 +13,7 @@ cc_library(
     hdrs = ["src/city.h"],
     include_prefix = "city_hash",
     strip_include_prefix = "src",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
 )
 

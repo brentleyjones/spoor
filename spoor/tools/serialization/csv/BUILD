@@ -16,6 +16,7 @@ cc_library(
     hdrs = ["csv.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
         "//spoor/instrumentation/symbols:symbols_cc_proto",

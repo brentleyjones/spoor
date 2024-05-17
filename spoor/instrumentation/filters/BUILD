@@ -22,6 +22,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/instrumentation:__subpackages__"],
     deps = ["//util:numeric"],
 )
@@ -48,6 +49,7 @@ cc_library(
     ],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/instrumentation:__subpackages__"],
     deps = [
         ":filters",
@@ -81,6 +83,7 @@ cc_library(
     hdrs = ["default_filters.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/instrumentation:__subpackages__"],
     deps = [":filters"],
 )
@@ -105,6 +108,7 @@ cc_library(
     hdrs = ["filters_reader_mock.h"],
     copts = SPOOR_DEFAULT_COPTS,
     linkopts = SPOOR_DEFAULT_LINKOPTS,
+    tags = ["manual"],
     visibility = ["//spoor/instrumentation:__subpackages__"],
     deps = [
         ":filters",
