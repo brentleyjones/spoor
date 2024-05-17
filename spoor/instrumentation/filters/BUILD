@@ -35,7 +35,7 @@ cc_test(
     visibility = ["//visibility:private"],
     deps = [
         ":filters",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -54,7 +54,7 @@ cc_library(
         "//util:numeric",
         "//util/file_system",
         "//util/flat_map",
-        "@com_google_absl//absl/strings:str_format",
+        "@abseil-cpp//absl/strings:str_format",
         "@com_marzer_tomlplusplus//:tomlplusplus",
     ],
 )
@@ -70,8 +70,8 @@ cc_test(
         ":filters",
         ":filters_reader",
         "//util/file_system:file_system_mock",
-        "@com_google_absl//absl/strings:str_format",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/strings:str_format",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -95,7 +95,7 @@ cc_test(
     deps = [
         ":default_filters",
         ":filters",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -109,6 +109,6 @@ cc_library(
     deps = [
         ":filters",
         "//util:numeric",
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
 )

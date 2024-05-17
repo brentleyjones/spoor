@@ -18,7 +18,7 @@ cc_library(
     linkopts = SPOOR_DEFAULT_LINKOPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/strings",
     ],
 )
 
@@ -32,6 +32,6 @@ cc_test(
     deps = [
         ":optional",
         "//util:numeric",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )

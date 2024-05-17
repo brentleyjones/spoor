@@ -28,7 +28,7 @@ cc_library(
         "//spoor/runtime/trace",
         "//util:numeric",
         "//util/compression",
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/strings",
         "@com_microsoft_gsl//:gsl",
     ],
 )
@@ -85,10 +85,10 @@ cc_test(
     deps = [
         ":runtime",
         ":runtime_default_config",
-        "@com_google_absl//absl/synchronization",
-        "@com_google_absl//absl/time",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/synchronization",
+        "@abseil-cpp//absl/time",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -102,10 +102,10 @@ cc_test(
     deps = [
         ":runtime_default_config",
         ":runtime_stub",
-        "@com_google_absl//absl/synchronization",
-        "@com_google_absl//absl/time",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/synchronization",
+        "@abseil-cpp//absl/time",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -118,7 +118,7 @@ cc_test(
     visibility = ["//visibility:private"],
     deps = [
         ":runtime_default_config",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -131,6 +131,6 @@ cc_test(
     visibility = ["//visibility:private"],
     deps = [
         ":runtime_default_config",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )

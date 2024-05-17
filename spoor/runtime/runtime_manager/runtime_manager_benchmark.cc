@@ -6,7 +6,6 @@
 #include <vector>
 
 #include "benchmark/benchmark.h"
-#include "external/com_google_benchmark/_virtual_includes/benchmark/benchmark/benchmark.h"
 #include "gsl/gsl"
 #include "spoor/runtime/flush_queue/black_hole_flush_queue.h"
 #include "spoor/runtime/runtime_manager/runtime_manager.h"

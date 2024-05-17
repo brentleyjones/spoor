@@ -25,7 +25,7 @@ cc_library(
         "//spoor/tools/config",
         "//spoor/tools/serialization/csv",
         "//util:result",
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/strings",
         "@com_microsoft_gsl//:gsl",
     ],
 )
@@ -44,7 +44,7 @@ cc_test(
         "//spoor/tools/adapters/perfetto:perfetto_trace_cc_proto",
         "//spoor/tools/config",
         "//spoor/tools/serialization/csv",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_protobuf//:protobuf",
+        "@googletest//:gtest_main",
+        "@protobuf",
     ],
 )

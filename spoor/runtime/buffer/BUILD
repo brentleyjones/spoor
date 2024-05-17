@@ -44,8 +44,8 @@ cc_test(
         ":buffer",
         "//util:numeric",
         "//util/memory",
-        "@com_google_googletest//:gtest_main",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -60,7 +60,7 @@ cc_test(
         ":buffer",
         "//util:numeric",
         "//util/memory",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -75,7 +75,7 @@ cc_test(
         ":buffer",
         "//util:numeric",
         "//util/memory",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -91,7 +91,7 @@ cc_test(
         "//util:numeric",
         "//util:result",
         "//util/memory",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -106,7 +106,7 @@ cc_test(
         ":buffer",
         "//util:numeric",
         "//util/memory",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -122,7 +122,7 @@ cc_test(
         "//util:numeric",
         "//util:result",
         "//util/memory",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -136,7 +136,7 @@ cc_test(
     deps = [
         ":buffer",
         "//util:numeric",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -149,7 +149,7 @@ cc_binary(
     deps = [
         ":buffer",
         "//util:numeric",
-        "@com_google_benchmark//:benchmark",
         "@com_microsoft_gsl//:gsl",
+        "@google_benchmark//:benchmark",
     ],
 )

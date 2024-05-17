@@ -4,17 +4,35 @@
 
 set -eu
 
-export HOME="$(pwd)"
-APP_PATH="$(pwd)/$APP_RELATIVE_PATH"
-DESTINATION="platform=iOS Simulator,name=iPhone 12"
+# --- begin runfiles.bash initialization v3 ---
+# Copy-pasted from the Bazel Bash runfiles library v3.
+set -uo pipefail; f=bazel_tools/tools/bash/runfiles/runfiles.bash
+source "${RUNFILES_DIR:-/dev/null}/$f" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "${RUNFILES_MANIFEST_FILE:-/dev/null}" | cut -f2- -d' ')" 2>/dev/null || \
+  source "$0.runfiles/$f" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "$0.runfiles_manifest" | cut -f2- -d' ')" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "$0.exe.runfiles_manifest" | cut -f2- -d' ')" 2>/dev/null || \
+  { echo>&2 "ERROR: cannot find $f"; exit 1; }; f=;
+# --- end runfiles.bash initialization v3 ---
+
+set +o pipefail
+
+home="$(mktemp -d)"
+export HOME="$home"
+
+app_build_file=$(rlocation "$APP_RELATIVE_PATH")
+APP_PATH="${app_build_file%/*}"
+DESTINATION="platform=iOS Simulator,OS=17.2,name=iPhone 15"
 CONFIGURATION="Debug"
+# FIXME: This doesn't work when a toolchain is at "~/Library/Developer/Toolchains" already
 XCODE_USER_TOOLCHAINS_PATH="$HOME/Library/Developer/Toolchains"
-SPOOR_TOOLCHAIN_PATH="$(pwd)/spoor/toolchains/xcode/$TOOLCHAIN_NAME"
-DERIVED_DATA_PATH="$(pwd)/DerivedData"
-OBJECT_FILE_PATH="$DERIVED_DATA_PATH/Build/Intermediates.noindex/$APP_NAME.build/$CONFIGURATION-iphonesimulator/$APP_NAME.build/Objects-normal"
+SPOOR_TOOLCHAIN_PATH=$(rlocation "_main/spoor/toolchains/xcode/$TOOLCHAIN_NAME")
+
+DERIVED_DATA_PATH="$(mktemp -d)"
 BINARY_FILE_PATH="$DERIVED_DATA_PATH/Build/Products/$CONFIGURATION-iphonesimulator/$APP_NAME.app/$APP_NAME"
 
 function clean_up {
+  rm -rf "$home"
   rm -rf "$DERIVED_DATA_PATH"
   rm -rf "$XCODE_USER_TOOLCHAINS_PATH"
 }
@@ -22,7 +40,6 @@ function clean_up {
 # Manually clean up artifacts because the this test cannot be run in a sandbox.
 trap clean_up SIGINT
 trap clean_up EXIT
-clean_up
 
 # Hack (continued): Revert files back to their original name by undoing the
 # `http_archive` patch.
@@ -32,7 +49,6 @@ find "$APP_PATH" -name '*__SPACE__*' -print0 |
       mv "$f" "$(dirname "$f")/$(basename "${f//__SPACE__/ }")"
     done
 
-mkdir -p "$DERIVED_DATA_PATH"
 mkdir -p "$XCODE_USER_TOOLCHAINS_PATH"
 ln -s "$SPOOR_TOOLCHAIN_PATH" "$XCODE_USER_TOOLCHAINS_PATH/$TOOLCHAIN_NAME"
 

@@ -27,7 +27,7 @@ cc_test(
     visibility = ["//visibility:private"],
     deps = [
         ":clock",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -40,6 +40,6 @@ cc_library(
     deps = [
         ":clock",
         "//util:numeric",
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
 )

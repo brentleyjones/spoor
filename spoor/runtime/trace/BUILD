@@ -31,8 +31,8 @@ cc_library(
         "//util:numeric",
         "//util/compression",
         "//util/file_system",
-        "@com_google_absl//absl/base:endian",
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/base:endian",
+        "@abseil-cpp//absl/strings",
         "@com_microsoft_gsl//:gsl",
     ],
 )
@@ -47,7 +47,7 @@ cc_test(
     deps = [
         ":trace",
         "//spoor/runtime/buffer",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -64,10 +64,10 @@ cc_test(
         "//util/compression",
         "//util/file_system:file_system_mock",
         "//util/flat_map",
-        "@com_google_absl//absl/base:endian",
-        "@com_google_absl//absl/strings",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/base:endian",
+        "@abseil-cpp//absl/strings",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -82,8 +82,8 @@ cc_test(
         ":trace",
         "//util/compression",
         "//util/file_system:file_system_mock",
-        "@com_google_googletest//:gtest_main",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -99,6 +99,6 @@ cc_library(
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         ":trace",
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
 )

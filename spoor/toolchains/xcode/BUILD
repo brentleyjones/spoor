@@ -42,6 +42,7 @@ py_library(
         "//spoor/toolchains/xcode/test_data/build_intermediates",
         "//spoor/toolchains/xcode/test_data/info_plists",
     ],
+    imports = ["."],
     visibility = ["//visibility:private"],
     deps = [":shared"],
 )
@@ -49,6 +50,7 @@ py_library(
 py_library(
     name = "shared",
     srcs = ["shared.py"],
+    imports = ["."],
     visibility = ["//visibility:private"],
 )
 
@@ -66,12 +68,14 @@ py_test(
 py_library(
     name = "clang_clangxx_shared",
     srcs = ["clang_clangxx_shared.py"],
+    imports = ["."],
     visibility = ["//visibility:private"],
 )
 
 py_library(
     name = "clang",
     srcs = ["clang.py"],
+    imports = ["."],
     visibility = ["//visibility:private"],
     deps = [":shared"],
 )
@@ -79,6 +83,7 @@ py_library(
 py_library(
     name = "clangxx",
     srcs = ["clangxx.py"],
+    imports = ["."],
     visibility = ["//visibility:private"],
     deps = [":shared"],
 )
@@ -98,6 +103,7 @@ py_test(
 py_library(
     name = "swift",
     srcs = ["swift.py"],
+    imports = ["."],
     visibility = ["//visibility:private"],
     deps = [":shared"],
 )
@@ -116,6 +122,7 @@ py_test(
 py_library(
     name = "swiftc",
     srcs = ["swiftc.py"],
+    imports = ["."],
     visibility = ["//visibility:private"],
     deps = [":shared"],
 )
@@ -222,7 +229,7 @@ genrule(
     visibility = ["//visibility:public"],
 )
 
-_MINIMAL_APP_RELATIVE_PATH = "spoor/toolchains/xcode/test_data"
+_MINIMAL_APP_RELATIVE_PATH = "_main/spoor/toolchains/xcode/test_data"
 
 sh_test(
     name = "instrument_minimal_objc_ios_app_test",
@@ -231,10 +238,11 @@ sh_test(
     data = [
         ":toolchain",
         "//spoor/toolchains/xcode/test_data/minimal_objc_ios_app",
+        "@bazel_tools//tools/bash/runfiles",
     ],
     env = {
         "APP_NAME": "MinimalObjcApp",
-        "APP_RELATIVE_PATH": "{}/minimal_objc_ios_app".format(
+        "APP_RELATIVE_PATH": "{}/minimal_objc_ios_app/BUILD".format(
             _MINIMAL_APP_RELATIVE_PATH,
         ),
         "TOOLCHAIN_NAME": TOOLCHAIN_NAME,
@@ -251,10 +259,11 @@ sh_test(
     data = [
         ":toolchain",
         "//spoor/toolchains/xcode/test_data/minimal_swift_ios_app",
+        "@bazel_tools//tools/bash/runfiles",
     ],
     env = {
         "APP_NAME": "MinimalSwiftApp",
-        "APP_RELATIVE_PATH": "{}/minimal_swift_ios_app".format(
+        "APP_RELATIVE_PATH": "{}/minimal_swift_ios_app/BUILD".format(
             _MINIMAL_APP_RELATIVE_PATH,
         ),
         "TOOLCHAIN_NAME": TOOLCHAIN_NAME,
@@ -270,11 +279,12 @@ sh_test(
     srcs = ["instrument_ios_app_test.sh"],
     data = [
         ":toolchain",
-        "@org_wikimedia_wikipedia_ios//:wikipedia_ios",
+        "@bazel_tools//tools/bash/runfiles",
+        "@wikipedia_ios",
     ],
     env = {
         "APP_NAME": "Wikipedia",
-        "APP_RELATIVE_PATH": "external/org_wikimedia_wikipedia_ios",
+        "APP_RELATIVE_PATH": "wikipedia_ios/BUILD.bazel",
         "TOOLCHAIN_NAME": TOOLCHAIN_NAME,
     },
     tags = _INSTRUMENT_APP_TAGS,

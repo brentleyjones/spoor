@@ -28,7 +28,7 @@ cc_test(
     visibility = ["//visibility:private"],
     deps = [
         ":output_language",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -52,10 +52,10 @@ cc_library(
         "//util/env",
         "//util/file_system",
         "//util/flags:optional",
-        "@com_google_absl//absl/flags:flag",
-        "@com_google_absl//absl/flags:parse",
-        "@com_google_absl//absl/strings",
-        "@com_google_absl//absl/strings:str_format",
+        "@abseil-cpp//absl/flags:flag",
+        "@abseil-cpp//absl/flags:parse",
+        "@abseil-cpp//absl/strings",
+        "@abseil-cpp//absl/strings:str_format",
         "@com_marzer_tomlplusplus//:tomlplusplus",
         "@com_microsoft_gsl//:gsl",
     ],
@@ -70,7 +70,7 @@ cc_library(
     visibility = ["//visibility:private"],
     deps = [
         ":source",
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
 )
 
@@ -91,7 +91,7 @@ cc_test(
         "//util/file_system",
         "//util/file_system:file_system_mock",
         "//util/flat_map",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -144,6 +144,6 @@ cc_test(
         "//util/env",
         "//util/file_system",
         "//util/flat_map",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )

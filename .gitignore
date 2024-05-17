@@ -2,8 +2,9 @@
 # Licensed under the MIT License.
 
 # Bazel
-.bazelrc
 bazel-*
+MODULE.bazel.lock
+user.bazelrc
 
 # Compilation database
 compile_commands.json

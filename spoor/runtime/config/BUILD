@@ -32,8 +32,8 @@ cc_library(
         "//util/compression",
         "//util/env",
         "//util/file_system",
-        "@com_google_absl//absl/strings",
-        "@com_google_absl//absl/strings:str_format",
+        "@abseil-cpp//absl/strings",
+        "@abseil-cpp//absl/strings:str_format",
         "@com_marzer_tomlplusplus//:tomlplusplus",
         "@com_microsoft_gsl//:gsl",
     ],
@@ -55,7 +55,7 @@ cc_library(
         "//util/compression",
         "//util/env",
         "//util/file_system",
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/strings",
     ],
 )
 
@@ -71,7 +71,7 @@ cc_library(
         "//spoor/runtime/trace",
         "//util:numeric",
         "//util/compression",
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
 )
 
@@ -91,8 +91,8 @@ cc_test(
         "//spoor/runtime/trace",
         "//util/file_system:file_system_mock",
         "//util/flat_map",
-        "@com_google_absl//absl/strings:str_format",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/strings:str_format",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -109,6 +109,6 @@ cc_test(
         ":source_mock",
         "//spoor/runtime/trace",
         "//util/compression",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )

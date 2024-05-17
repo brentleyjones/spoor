@@ -45,10 +45,10 @@ cc_test(
         "//spoor/runtime/trace:trace_mock",
         "//util/file_system:file_system_mock",
         "//util/time:clock_mock",
-        "@com_google_absl//absl/strings:str_format",
-        "@com_google_absl//absl/synchronization",
-        "@com_google_absl//absl/time",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/strings:str_format",
+        "@abseil-cpp//absl/synchronization",
+        "@abseil-cpp//absl/time",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -63,7 +63,7 @@ cc_binary(
         "//spoor/runtime/flush_queue:black_hole_flush_queue",
         "//util:numeric",
         "//util/time:clock",
-        "@com_google_benchmark//:benchmark",
         "@com_microsoft_gsl//:gsl",
+        "@google_benchmark//:benchmark",
     ],
 )

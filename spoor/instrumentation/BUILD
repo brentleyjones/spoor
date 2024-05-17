@@ -29,7 +29,7 @@ cc_test(
     deps = [
         ":instrumentation_info",
         "//spoor/instrumentation/symbols:symbols_cc_proto",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -51,17 +51,17 @@ cc_library(
         "//spoor/instrumentation/symbols:symbols_writer",
         "//util/file_system",
         "//util/time:clock",
-        "@com_google_absl//absl/flags:config",
-        "@com_google_absl//absl/flags:flag",
-        "@com_google_absl//absl/flags:usage",
-        "@com_google_absl//absl/strings",
-        "@com_google_protobuf//:protobuf",
+        "@abseil-cpp//absl/flags:config",
+        "@abseil-cpp//absl/flags:flag",
+        "@abseil-cpp//absl/flags:usage",
+        "@abseil-cpp//absl/strings",
         "@com_microsoft_gsl//:gsl",
         "@llvm-project//llvm:BitWriter",
         "@llvm-project//llvm:Core",
         "@llvm-project//llvm:Passes",
         "@llvm-project//llvm:Support",
         "@llvm-project//llvm:config",
+        "@protobuf",
     ],
 )
 
@@ -96,8 +96,8 @@ SHARED_LIBRARY_DEPS = [
     "//spoor/instrumentation/symbols:symbols_writer",
     "//util/file_system",
     "//util/time:clock",
-    "@com_google_absl//absl/strings:str_format",
-    "@com_google_protobuf//:protobuf",
+    "@abseil-cpp//absl/strings:str_format",
+    "@protobuf//:protobuf",
     "@llvm-project//llvm:Support",
     "@llvm-project//llvm:Core",
     "@llvm-project//llvm:Passes",

@@ -47,9 +47,9 @@ cc_library(
         ":compile_commands_cc_proto",
         ":extra_actions_base_cc_proto",
         "//util:result",
-        "@com_google_absl//absl/strings",
-        "@com_google_protobuf//:protobuf",
+        "@abseil-cpp//absl/strings",
         "@com_microsoft_gsl//:gsl",
+        "@protobuf",
     ],
 )
 
@@ -62,8 +62,8 @@ cc_test(
     visibility = ["//visibility:private"],
     deps = [
         ":compilation_database_util",
-        "@com_google_absl//absl/strings",
-        "@com_google_googletest//:gtest_main",
+        "@abseil-cpp//absl/strings",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -77,10 +77,10 @@ cc_binary(
     visibility = ["//visibility:public"],
     deps = [
         ":compilation_database_util",
-        "@com_google_absl//absl/flags:flag",
-        "@com_google_absl//absl/flags:parse",
-        "@com_google_absl//absl/flags:usage",
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/flags:flag",
+        "@abseil-cpp//absl/flags:parse",
+        "@abseil-cpp//absl/flags:usage",
+        "@abseil-cpp//absl/strings",
     ],
 )
 
@@ -92,9 +92,9 @@ cc_binary(
     visibility = ["//visibility:public"],
     deps = [
         ":compilation_database_util",
-        "@com_google_absl//absl/flags:flag",
-        "@com_google_absl//absl/flags:parse",
-        "@com_google_absl//absl/flags:usage",
+        "@abseil-cpp//absl/flags:flag",
+        "@abseil-cpp//absl/flags:parse",
+        "@abseil-cpp//absl/flags:usage",
     ],
 )
 

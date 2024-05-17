@@ -38,8 +38,8 @@ cc_library(
     visibility = ["//spoor/runtime:__subpackages__"],
     deps = [
         ":event_logger",
-        "@com_google_googletest//:gtest",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest",
     ],
 )
 
@@ -57,7 +57,7 @@ cc_test(
         "//spoor/runtime/flush_queue:flush_queue_mock",
         "//spoor/runtime/trace",
         "//util/time:clock_mock",
-        "@com_google_googletest//:gtest_main",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest_main",
     ],
 )

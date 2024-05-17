@@ -31,7 +31,7 @@ cc_test(
     visibility = ["//visibility:private"],
     deps = [
         ":config",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
@@ -46,9 +46,9 @@ cc_library(
         ":config",
         "//util/env",
         "//util/file_system",
-        "@com_google_absl//absl/flags:flag",
-        "@com_google_absl//absl/flags:parse",
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/flags:flag",
+        "@abseil-cpp//absl/flags:parse",
+        "@abseil-cpp//absl/strings",
     ],
 )
 
@@ -63,7 +63,7 @@ cc_test(
         ":command_line_config",
         "//util/env",
         "//util/file_system",
-        "@com_google_googletest//:gtest_main",
         "@com_microsoft_gsl//:gsl",
+        "@googletest//:gtest_main",
     ],
 )
