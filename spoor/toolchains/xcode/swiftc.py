@@ -16,6 +16,11 @@ import sys
 def main(argv, build_tools):
   args = argv[1:]
 
+  # Version check
+  if args[0] == "-v" and len(args) == 1:
+    subprocess.run([build_tools.swiftc, "-v"], env=os.environ, check=True)
+    return
+
   parser = argparse.ArgumentParser()
   parser.add_argument('-output-file-map', dest='output_file_map_path')
   known_args, _ = parser.parse_known_args(args)
