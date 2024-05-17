@@ -12,8 +12,8 @@ namespace spoor::common::util {
 template <class T, class GetValueFromSource, class Source>
 auto ValueFromSourceOrDefault(
     const std::vector<std::unique_ptr<Source>>& sources,
-    const GetValueFromSource get_value_from_source, const T& default_value)
-    -> T {
+    const GetValueFromSource get_value_from_source,
+    const T& default_value) -> T {
   for (const auto& source : sources) {
     if (!source->IsRead()) {
       const auto errors = source->Read();

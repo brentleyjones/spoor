@@ -71,7 +71,8 @@ auto InjectInstrumentation::run(llvm::Module& llvm_module,
     auto filters_result =
         options_.filters_reader->Read(options_.filters_file_path.value());
     if (filters_result.IsErr()) {
-      llvm::report_fatal_error(llvm::Twine(filters_result.Err().message), false);
+      llvm::report_fatal_error(llvm::Twine(filters_result.Err().message),
+                               false);
     }
     auto file_filters = std::move(filters_result).Ok();
     std::move(std::begin(file_filters), std::end(file_filters),
